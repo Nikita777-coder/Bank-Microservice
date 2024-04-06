@@ -1,0 +1,11 @@
+server-configs:
+  exchange-trading-data-provider:
+    twelve:
+      api-key:
+      base-url: https://api.twelvedata.com
+      rate-exchange-path: currency_conversion
+  rest-service:
+    web-client:
+      response-timeout: 8
+  month-limit:
+    defaultLimitNumber: 1000
