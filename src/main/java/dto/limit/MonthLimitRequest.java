@@ -14,4 +14,5 @@ public class MonthLimitRequest {
     private UUID clientId;
     private String currency;
     private BigDecimal limit;
+    private String transactionType = "service";
 }
