@@ -1,5 +1,7 @@
 package dto;
 
+import dto.limit.MonthLimitResponse;
+import entities.MonthLimitEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +13,6 @@ import java.time.LocalDateTime;
 public class TransactionDTO {
     private String currency;
     private BigDecimal amount;
-    private LocalDateTime operationTime;
+    private LocalDateTime timeOperation;
+    private MonthLimitResponse limit;
 }

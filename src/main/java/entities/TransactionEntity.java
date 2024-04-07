@@ -1,5 +1,6 @@
 package entities;
 
+import enums.TransferType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Table(name = "transactions")
+@Table(name = "transactions",
+    indexes = {
+            @Index(name = "transferTypeIndex", columnList = "transferType"),
+            @Index(name = "timeOperationIndex", columnList = "timeOperation", unique = true)
+    }
+)
 @Entity
 @NoArgsConstructor
 @Getter
@@ -24,9 +30,16 @@ public class TransactionEntity {
     private String currency;
     private BigDecimal amount;
 
+    @Column(name = "transfer_type")
+    private TransferType transferType;
+
     @Column(name = "limit_exceeded")
     private Boolean limitExceeded;
 
     @Column(name = "time_operation")
     private LocalDateTime timeOperation;
+
+    @ManyToOne(cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+    @JoinColumn(name = "client_id")
+    private MonthLimitEntity limit;
 }
