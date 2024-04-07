@@ -1,5 +1,6 @@
 package dto;
 
+import enums.TransferType;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,4 +17,5 @@ public class ConsumableOperation {
     private String currency;
     private BigDecimal amount;
     private LocalDateTime operationTime;
+    private TransferType transferType;
 }

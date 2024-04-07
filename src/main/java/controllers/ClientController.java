@@ -1,7 +1,7 @@
 package controllers;
 
+import dto.limit.LimitTransactionsRequest;
 import dto.limit.MonthLimitRequest;
-import dto.limit.MonthLimitResponse;
 import dto.TransactionDTO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,18 +29,15 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
-    @GetMapping("{clientId}/transactions")
-    public ResponseEntity<List<TransactionDTO>> getLimitTransactions(@PathVariable UUID clientId) {
-        return new ResponseEntity<>(clientService.getLimitTransactions(clientId), HttpStatus.OK);
+    @GetMapping("/transactions")
+    public ResponseEntity<List<TransactionDTO>> getLimitTransactions(
+            @Valid @RequestBody LimitTransactionsRequest limitTransactionsRequest) {
+        return new ResponseEntity<>(clientService.getLimitTransactions(limitTransactionsRequest), HttpStatus.OK);
     }
 
     @PostMapping("/new-limit")
     public ResponseEntity<UUID> setNewLimit(@Valid @RequestBody MonthLimitRequest limitRequest) {
         return new ResponseEntity<>(clientService.setNewLimit(limitRequest), HttpStatus.CREATED);
-    }
-    @GetMapping("{clientId}/limits")
-    public ResponseEntity<List<MonthLimitResponse>> getAllLimits(@PathVariable UUID clientId) {
-        return new ResponseEntity<>(clientService.getAllLimits(clientId), HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -3,6 +3,7 @@ package services;
 import dto.ConsumableOperation;
 import dto.ratexchange.RateExchangeRequest;
 import dto.ratexchange.RateExchangeResponse;
+import entities.MonthLimitEntity;
 import entities.RateExchangeEntity;
 import entities.TransactionEntity;
 import exchangetrandingdataproviders.ExchangeTradingDataProvider;
@@ -88,10 +89,6 @@ public class TransactionService {
                 month
         );
 
-        if (foundLimit.isEmpty()) {
-            return monthLimitService.createDefaultMonthLimit(clientId);
-        }
-
-        return foundLimit.get();
+        return foundLimit.orElseGet(() -> monthLimitService.createDefaultMonthLimit(clientId));
     }
 }
