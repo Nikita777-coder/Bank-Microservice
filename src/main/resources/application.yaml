@@ -1,7 +1,7 @@
 server-configs:
   exchange-trading-data-provider:
     twelve:
-      api-key:
+      api-key: <your_twelve_data_api>
       base-url: https://api.twelvedata.com
       rate-exchange-path: currency_conversion
   rest-service:
@@ -9,3 +9,16 @@ server-configs:
       response-timeout: 8
   month-limit:
     defaultLimitNumber: 1000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/idflab
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  main:
+    allow-bean-definition-overriding: true
