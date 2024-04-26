@@ -20,7 +20,7 @@ public class MonthLimitService {
     @Value("${server-configs.month-limit.defaultLimitNumber}")
     private BigDecimal defaultLimitNumber;
     public Optional<MonthLimitEntity> findLastMonthLimitByClientIdAndMonth(UUID clientId, Month month) {
-        return monthLimitRepository.findAllByClientIdAndTimestampMonthValueOrderByTimestampDesc(
+        return monthLimitRepository.getAllByClientIdAndTimestampMonthValueOrderByTimestampDesc(
                 clientId,
                 month.getValue()
         ).stream().findFirst();

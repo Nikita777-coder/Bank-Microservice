@@ -37,7 +37,7 @@ public class ClientService {
     public UUID setNewLimit(MonthLimitRequest monthLimitRequest) {
         TransferType transferType = monthLimitMapper.stringToTransferType(monthLimitRequest.getTransactionType());
         List<TransactionEntity> foundTransactions = transactionRepository
-                .findAllByClientIdAndTransferTypeAndTimeOperationMonthValue(
+                .getAllByClientIdAndTransferTypeAndTimeOperationMonthValue(
                         monthLimitRequest.getClientId(),
                         transferType,
                         LocalDateTime.now().getMonth().getValue()

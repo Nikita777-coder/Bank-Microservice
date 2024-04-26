@@ -39,7 +39,7 @@ public class TransactionEntity {
     @Column(name = "time_operation")
     private LocalDateTime timeOperation;
 
-    @ManyToOne
-    @JoinColumn(name = "client_limit")
-    private MonthLimitEntity limit;
+//    @ManyToOne
+//    @JoinColumn(name = "client_limit")
+//    private MonthLimitEntity limit;
 }
