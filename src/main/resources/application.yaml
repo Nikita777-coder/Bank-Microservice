@@ -1,7 +1,7 @@
 server-configs:
   exchange-trading-data-provider:
     twelve:
-      api-key: <your_twelve_data_api>
+      api-key: 0584ca54bff848edb676568d1d4600a9
       base-url: https://api.twelvedata.com
       rate-exchange-path: currency_conversion
   rest-service:
@@ -11,14 +11,27 @@ server-configs:
     defaultLimitNumber: 1000
 
 spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/bank_microservice
+#    username: postgres
+#    password: postgres
   datasource:
-    url: jdbc:postgresql://localhost:5433/idflab
-    username: postgres
-    password: postgres
+    url: jdbc:h2:mem:bank_microservice
+    username: user
+    password: user
   jpa:
     hibernate:
       ddl-auto: update
     generate-ddl: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        show_sql: true
   main:
     allow-bean-definition-overriding: true
+
+logging:
+  level:
+    sql: debug
+    web: debug
