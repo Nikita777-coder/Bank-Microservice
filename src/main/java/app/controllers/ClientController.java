@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.dto.GetLimitAns;
 import app.dto.limit.LimitTransactionsRequest;
 import app.dto.limit.MonthLimitRequest;
 import app.dto.TransactionDTO;
@@ -29,9 +30,9 @@ import java.util.UUID;
 public class ClientController {
     private final ClientService clientService;
     @GetMapping("/transactions")
-    public ResponseEntity<List<TransactionDTO>> getLimitTransactions(
+    public ResponseEntity<GetLimitAns> getLimitTransactions(
             @Valid @RequestBody LimitTransactionsRequest limitTransactionsRequest) {
-        return new ResponseEntity<>(clientService.getLimitTransactions(limitTransactionsRequest), HttpStatus.OK);
+        return new ResponseEntity<>(GetLimitAns.of(clientService.getLimitTransactions(limitTransactionsRequest)), HttpStatus.OK);
     }
 
     @PostMapping("/new-limit")
