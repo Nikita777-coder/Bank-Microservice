@@ -27,7 +27,7 @@ public class ClientService {
     private final MonthLimitMapper monthLimitMapper;
     private final MonthLimitRepository monthLimitRepository;
     public List<TransactionDTO> getLimitTransactions(LimitTransactionsRequest request) {
-        TransferType requestTransactionType = monthLimitMapper.stringToTransferType(request.getTransferType());
+        TransferType requestTransactionType = request.getTransferType();
         return transactionMapper.transactionEntitiesToTransactionDTOs(transactionRepository.
                 findAllByClientIdAndTransferTypeAndLimitExceeded(request.getClientId(), requestTransactionType, false)
         );
@@ -35,7 +35,7 @@ public class ClientService {
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public UUID setNewLimit(MonthLimitRequest monthLimitRequest) {
-        TransferType transferType = monthLimitMapper.stringToTransferType(monthLimitRequest.getTransactionType());
+        TransferType transferType = monthLimitRequest.getTransactionType();
         List<TransactionEntity> foundTransactions = transactionRepository
                 .getAllByClientIdAndTransferTypeAndTimeOperationMonthValue(
                         monthLimitRequest.getClientId(),

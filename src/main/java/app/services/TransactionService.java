@@ -35,7 +35,7 @@ public class TransactionService {
     @Qualifier("twelveExchangeTradingDataProvider")
     private final ExchangeTradingDataProvider rateProvider;
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public UUID saveConsumableOperation(ConsumableOperation consumableOperation) {
         Month operationMonth = consumableOperation.getOperationTime().getMonth();
         MonthLimitEntity monthLimit = getMonthLimit(consumableOperation.getClientId(), operationMonth);
