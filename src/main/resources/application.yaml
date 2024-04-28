@@ -11,14 +11,14 @@ server-configs:
     defaultLimitNumber: 1000
 
 spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/bank_microservice
-#    username: postgres
-#    password: postgres
   datasource:
-    url: jdbc:h2:mem:bank_microservice
-    username: user
-    password: user
+    url: jdbc:postgresql://localhost:5432/bank_microservice
+    username: postgres
+    password: postgres
+#  datasource:
+#    url: jdbc:h2:mem:bank_microservice
+#    username: user
+#    password: user
   jpa:
     hibernate:
       ddl-auto: update
@@ -28,6 +28,7 @@ spring:
     properties:
       hibernate:
         show_sql: true
+#    database-platform: org.hibernate.dialect.H2Dialect
   main:
     allow-bean-definition-overriding: true
 
