@@ -36,10 +36,10 @@ public class TransactionEntity {
     @Column(name = "limit_exceeded")
     private Boolean limitExceeded;
 
-    @Column(name = "time_operation")
+    @Column(name = "time_operation", updatable = false)
     private LocalDateTime timeOperation;
 
-//    @ManyToOne
-//    @JoinColumn(name = "client_limit")
-//    private MonthLimitEntity limit;
+    @ManyToOne
+    @JoinColumn(name = "client_limit")
+    private MonthLimitEntity limit;
 }

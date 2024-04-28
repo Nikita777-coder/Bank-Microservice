@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
@@ -14,7 +16,11 @@ public class SecurityConfigurations {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/**").authenticated()
+                        .requestMatchers(
+                                antMatcher("/swagger-ui/**"),
+                                antMatcher("/v3/api-docs/**")
+                        )
+                        .authenticated()
                         .anyRequest().permitAll()
                 );
 

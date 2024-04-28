@@ -39,5 +39,6 @@ public class MonthLimitEntity {
     @Column(name = "type_of_month_limit")
     private TransferType monthLimitType;
 
+    @Column(updatable = false)
     private LocalDateTime timestamp;
 }

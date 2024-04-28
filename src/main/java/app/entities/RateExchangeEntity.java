@@ -29,6 +29,6 @@ public class RateExchangeEntity {
     private String to;
     private BigDecimal rate;
 
-    @Column(name = "fixed_date")
+    @Column(name = "fixed_date", updatable = false)
     private LocalDateTime fixedDate;
 }
