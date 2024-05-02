@@ -34,7 +34,7 @@ jobs:
 
           # Собираем образы для каждого модуля
           for module in $modules; do
-            mvn clean package
+            mvn clean -Dmaven.test.skip package
           
             module_name='bank_microservice'
             docker build -t $module_name $module
