@@ -12,10 +12,10 @@
 3. Get limit transactions - receiving transactions that exceeded the month limit, indicating the data on the limit (amount, date of establishment, currency)
 
 ## Stack
-1. Spring Boot 3
+1. Spring Boot 3.2
 2. PostgreSQL
 3. Java
-4. Web,
+4. Web
 5. WebFlux
 6. Rest API
 7. WebClient
