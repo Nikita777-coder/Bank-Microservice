@@ -30,7 +30,7 @@ jobs:
       - name: Push image
         id: step1
         run: |
-          modules=("IDFLab")
+          modules=(find . -name "pom.xml" -exec dirname {} \;)
 
           # Собираем образы для каждого модуля
           for module in $modules; do
@@ -51,7 +51,7 @@ jobs:
             docker push ${{ secrets.DOCKER_USERNAME }}/$module_name:$githubBranchName-$git_hash
           
             if [ ${GITHUB_REF} = 'refs/heads/main' ]; then
-              docker tag proga ${{ secrets.DOCKER_USERNAME }}/$module:latest
-              docker push ${{ secrets.DOCKER_USERNAME }}/$module:latest
+              docker tag $module_name ${{ secrets.DOCKER_USERNAME }}/$module_name:latest
+              docker push ${{ secrets.DOCKER_USERNAME }}/$module_name:latest
             fi
           done
