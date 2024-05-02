@@ -8,9 +8,6 @@
     <artifactId>IDFLab</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <modules>
-        <module>untitled</module>
-    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
