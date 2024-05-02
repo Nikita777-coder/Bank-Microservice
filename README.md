@@ -1,5 +1,3 @@
-#readme_bank_microservice
-
 # Bank microservice
 
 💵Bank microservice - server side of application which has part functional of bank transaction server and operations of bank client application or website💵
