@@ -30,7 +30,7 @@ jobs:
       - name: Push image
         id: step1
         run: |
-          modules=$(find . -type f -name pom.xml -exec dirname {} \;)
+          modules=$(find . -name "pom.xml" -exec dirname {} \;)
 
           # Собираем образы для каждого модуля
           for module in $modules; do
