@@ -116,5 +116,7 @@ extraEnv:
     value:
   - name: DB_PASSWORD
     value:
+  - name: DB_PLATFORM
+    value:
   - name: SERVER_CONFIGS_DEFAULT_LIMIT
     value:

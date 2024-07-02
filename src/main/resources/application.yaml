@@ -1,14 +1,14 @@
 server-configs:
   exchange-trading-data-provider:
     twelve:
-      api-key: ${TWELVE_API_KEY}
-      base-url: ${TWELVE_BASE_URL}
+      api-key: ${TWELVE_API_KEY:demo}
+      base-url: ${TWELVE_BASE_URL:https://api.twelvedata.com}
       rate-exchange-path: currency_conversion
   rest-service:
     web-client:
       response-timeout: 8
   month-limit:
-    defaultLimitNumber: ${SERVER_CONFIGS_DEFAULT_LIMIT}
+    defaultLimitNumber: ${SERVER_CONFIGS_DEFAULT_LIMIT:1000}
 
 spring:
   datasource:
@@ -19,7 +19,7 @@ spring:
     hibernate:
       ddl-auto: update
     generate-ddl: true
-    database-platform: ${DB_PLATFORM:org.hibernate.dialect.H2Dialect}org.hibernate.dialect.PostgreSQLDialect
+    database-platform: ${DB_PLATFORM:org.hibernate.dialect.H2Dialect}
   main:
     allow-bean-definition-overriding: true
 
@@ -27,3 +27,7 @@ logging:
   level:
     sql: debug
     web: debug
+
+springdoc:
+  api-docs:
+    path: /api-docs

@@ -33,7 +33,7 @@ public class ClientService {
         );
     }
 
-    @Transactional(isolation = Isolation.SERIALIZABLE)
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public UUID setNewLimit(MonthLimitRequest monthLimitRequest) {
         TransferType transferType = monthLimitRequest.getTransactionType();
         List<TransactionEntity> foundTransactions = transactionRepository
