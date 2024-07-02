@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Table(name = "rate_exchanges",
-    indexes = {@Index(name = "fromCurrencyIndex", columnList = "from"), @Index(name = "toCurrencyIndex", columnList = "to")})
+    indexes = {@Index(name = "fromCurrencyIndex", columnList = "fromCurrencyIndex"), @Index(name = "toCurrencyIndex", columnList = "toCurrencyIndex")})
 @Entity
 @NoArgsConstructor
 @Getter
@@ -25,7 +25,11 @@ public class RateExchangeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @Column(name = "fromCurrencyIndex")
     private String from;
+
+    @Column(name = "toCurrencyIndex")
     private String to;
     private BigDecimal rate;
 
