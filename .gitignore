@@ -39,3 +39,4 @@ build/
 
 ### My files ###
 TODO.md
+src/main/resources/application.yaml

@@ -6,7 +6,6 @@ import app.dto.TransactionDTO;
 import app.dto.ratexchange.RateExchangeRequest;
 import app.dto.ratexchange.RateExchangeResponse;
 import app.enums.TransferType;
-import com.google.gson.reflect.TypeToken;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

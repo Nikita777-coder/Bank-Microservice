@@ -2,6 +2,7 @@ package app.dto;
 
 import app.enums.TransferType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 public class ConsumableOperation {
-    @NotBlank(message = "clientId required!")
+    @NotNull(message = "clientId required!")
     private UUID clientId;
     private String currency;
     private BigDecimal amount;
